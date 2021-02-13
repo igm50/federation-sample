@@ -1,0 +1,27 @@
+@startuml
+
+component Kubernetes {
+  component Pod1 {
+    [Gateway]
+    [DB A]
+  }
+
+  component Pod2 {
+    [Apollo Server]
+    [DB B]
+
+    [Apollo Server] --left-> [DB B]
+  }
+
+  component Pod3 {
+    [DB C]
+  }
+
+  [Gateway] --right-> [DB A]
+  [Gateway] --up-> [Apollo Server]
+  [Gateway] --left-> [DB C]
+}
+
+[Apollo client] --up-> [Gateway]
+
+@enduml
